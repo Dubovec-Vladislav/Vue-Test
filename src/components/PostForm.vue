@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     createPost() {
-      this.post.is = Date.now();
+      this.post.id = Date.now();
       this.$emit("create", this.post);
       this.post = {
         title: "",
@@ -26,11 +26,19 @@ export default {
       };
     },
   },
+  watch: {
+    post: {
+      handler(newValue) {
+        console.log(newValue);
+      },
+      deep: true, // Отслеживать все изменения
+    },
+  },
 };
 </script>
 
 <style scoped>
 .form {
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px 30px 0px;
 }
 </style>
